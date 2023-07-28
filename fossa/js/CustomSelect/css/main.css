@@ -1,0 +1,88 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.custom-select {
+  --height: 2rem;
+  --option-height: 2rem;
+  --padding: 0.5rem;
+  --options-max-height: 10rem;
+  height: var(--height);
+  position: relative;
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
+  > header {
+    > button {
+      height: var(--height);
+      display: flex;
+      align-items: center;
+      padding: 0 var(--padding);
+    }
+  }
+
+  & button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font: inherit;
+    text-align: inherit;
+    border-radius: 0;
+  }
+
+  > section {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    translate: 0 100%;
+    border-radius: 0.25rem;
+    border: 1px solid #ccc;
+    opacity: 0;
+    pointer-events: none;
+
+    > ul {
+      padding: 0;
+      margin: 0;
+      overflow: auto;
+      max-height: var(--options-max-height);
+
+      > li {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        > button {
+          height: var(--option-height);
+          display: flex;
+          gap: 0.5rem;
+          align-items: center;
+          padding: 0 var(--padding);
+        }
+      }
+    }
+  }
+
+  &:focus-within {
+    outline: 1px solid #ccc;
+    > button {
+      outline: none;
+    }
+    > section {
+      opacity: 1;
+      pointer-events: all;
+      transform: translateY(0);
+    }
+  }
+
+  /* flag */
+  & .flag {
+    height: var(--option-height);
+    width: var(--option-height);
+    padding: 0.25rem;
+  }
+}
