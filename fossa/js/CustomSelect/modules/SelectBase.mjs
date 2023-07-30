@@ -92,6 +92,9 @@ export default function BaseSelect({ settings, emit, on, addFilter, filter }) {
       emit("select:change", { value });
     });
 
+    button.addEventListener("focus", (e) => emit("select:focus", e));
+    button.addEventListener("blur", (e) => emit("select:blur", e));
+
     // add button to li
     let li = document.createElement("li");
     li.append(button);
